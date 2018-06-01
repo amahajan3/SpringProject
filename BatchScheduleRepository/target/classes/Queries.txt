@@ -1,0 +1,127 @@
+
+CREATE TABLE city_mst (                                                                                                                                  
+	CITY_ID bigint(20) NOT NULL AUTO_INCREMENT,
+	CITY_CODE varchar(35) DEFAULT NULL,
+	CITY_NAME varchar(50) DEFAULT NULL,
+	STATE_ID bigint(20) DEFAULT NULL,    
+	PRIMARY KEY (CITY_ID),                
+	CONSTRAINT `FK_STATE_ID` FOREIGN KEY (`STATE_ID`) REFERENCES `state_mst` (`STATE_ID`)      
+);
+
+CREATE TABLE state_mst (                                                                       
+	STATE_ID bigint(20) NOT NULL AUTO_INCREMENT,                                                    
+	STATE_CODE varchar(35) DEFAULT NULL,                                                         
+	STATE_NAME varchar(35) DEFAULT NULL,                                                         
+	PRIMARY KEY (STATE_ID)                                                                      
+);
+
+
+CREATE TABLE academic_details (                                                                       
+	ACADEMIC_DETAILS_ID BIGINT(20) NOT NULL AUTO_INCREMENT,                                                    
+	GRADUATION VARCHAR(35) DEFAULT NULL,   
+	GRADUATION_PERCENTAGE VARCHAR(35) DEFAULT NULL,   
+	GRADUATION_YEAR VARCHAR(35) DEFAULT NULL,   
+	GRADUATION_DURATION VARCHAR(35) DEFAULT NULL,   						
+	MASTER_DEGREE VARCHAR(35) DEFAULT NULL,                                                         
+	MASTER_PERCENTAGE VARCHAR(35) DEFAULT NULL,   
+	MASTER_YEAR VARCHAR(35) DEFAULT NULL,   
+	MASTER_DURATION VARCHAR(35) DEFAULT NULL,   						
+	DIPLOMA VARCHAR(500) DEFAULT NULL,                                                         
+	PRIMARY KEY (ACADEMIC_DETAILS_ID)                                                                      
+);
+
+CREATE TABLE person_details (                         
+     PERSON_DETAILS_ID BIGINT(20) NOT NULL AUTO_INCREMENT,  
+     FIRST_NAME VARCHAR(50) DEFAULT NULL,                              
+     LAST_NAME VARCHAR(50) DEFAULT NULL,                        
+     FATHER_NAME VARCHAR(50) DEFAULT NULL,             
+     MOTHER_NAME VARCHAR(50) DEFAULT NULL,                               
+     DATE_OF_BIRTH DATE DEFAULT NULL,                                
+     GENDER CHAR(1) DEFAULT NULL,                             
+     EMAIL_ID VARCHAR(50) DEFAULT NULL,                     
+     MOBILE_NO VARCHAR(10) DEFAULT NULL,  
+     PASSWORD VARCHAR(10) DEFAULT NULL,                    
+     ADDRESS_LINE_1 VARCHAR(100) DEFAULT NULL,                
+     ADDRESS_LINE_2 VARCHAR(100) DEFAULT NULL,                
+     PIN_CODE BIGINT(6) DEFAULT NULL,                
+     DISTRICT VARCHAR(50) DEFAULT NULL,                   
+     AADHAAR_CARD_APPLICABLE CHAR(1) DEFAULT NULL,   
+     AADHAAR_CARD_NO VARCHAR(12) DEFAULT NULL,                             
+     CREATED_DATE DATE DEFAULT NULL,                                     
+     MODIFIED_DATE DATE DEFAULT NULL,                          
+     PROFILE CHAR(1) DEFAULT NULL,
+     IS_ACTIVE CHAR(1) DEFAULT NULL,
+     STATE_ID BIGINT(20) DEFAULT NULL,
+     CITY_ID BIGINT(20) DEFAULT NULL,
+     ACADEMIC_DETAILS_ID BIGINT(20) DEFAULT NULL,
+     PRIMARY KEY (PERSON_DETAILS_ID),                     
+     CONSTRAINT `FK_PERSON_DET_STATE_ID` FOREIGN KEY (`STATE_ID`) REFERENCES `state_mst` (`STATE_ID`),
+     CONSTRAINT `FK_PERSON_DET_CITY_ID` FOREIGN KEY (`CITY_ID`) REFERENCES `city_mst` (`CITY_ID`),
+     CONSTRAINT `FK_PERSON_DET_ACAD_DET_ID` FOREIGN KEY (`ACADEMIC_DETAILS_ID`) REFERENCES `academic_details` (`ACADEMIC_DETAILS_ID`)
+);
+
+
+CREATE TABLE employment_details (                                                                       
+	EMPLOYMENT_DETAILS_ID BIGINT(20) AUTO_INCREMENT,                                                    
+	EMPLOYER VARCHAR(100) DEFAULT NULL,   
+	POSITION_HELD VARCHAR(50) DEFAULT NULL,   
+	DATE_OF_JOINING DATE DEFAULT NULL,  
+	DATE_OF_LEAVING DATE DEFAULT NULL, 						
+	PAY_WITH_SCALE_OF_PAY VARCHAR(35) DEFAULT NULL,                                                         
+	PRIMARY KEY (EMPLOYMENT_DETAILS_ID)                                                                      
+);
+
+CREATE TABLE trainer_details (                                                                       
+	TRAINER_DETAILS_ID BIGINT(20) NOT NULL AUTO_INCREMENT,   
+	TRAINER_CODE VARCHAR(35) DEFAULT NULL,   
+	TRAINER_PERSON_DETAILS_ID BIGINT(20) DEFAULT NULL,
+	TITLE VARCHAR(35) DEFAULT NULL,   
+	AREAS_OF_SPECIALIZATION  TEXT  DEFAULT NULL,   
+	DEPARTMENT VARCHAR(35) DEFAULT NULL,   
+	OFFICE_LOCATION VARCHAR(35) DEFAULT NULL,   						
+	OFFICE_TELEPHONE VARCHAR(35) DEFAULT NULL,                                                         
+	EXPERIENCE VARCHAR(50) DEFAULT NULL,   
+	RESEARCH_INTERESTS  TEXT  DEFAULT NULL,   
+	PROJECTS TEXT DEFAULT NULL,   						
+	PRIMARY KEY (TRAINER_DETAILS_ID),
+	FOREIGN KEY (TRAINER_PERSON_DETAILS_ID) REFERENCES person_details (PERSON_DETAILS_ID)
+);
+
+
+create table student_details (
+	STUDENT_ID BIGINT(20) NOT NULL AUTO_INCREMENT,
+	STUDENT_PERSON_DETAILS_ID BIGINT(20) DEFAULT NULL,
+	PRIMARY KEY (STUDENT_ID),
+	FOREIGN KEY (STUDENT_PERSON_DETAILS_ID) REFERENCES person_details (PERSON_DETAILS_ID)
+	
+);
+
+CREATE TABLE fees_details (                                                                                                                                  
+	FEES_DETAILS_ID BIGINT(20) NOT NULL AUTO_INCREMENT,
+	FEES_PAID_DATE date DEFAULT NULL,
+	FEES_RECEIPT_NO VARCHAR(50) DEFAULT NULL,
+	AMOUNT VARCHAR(50) DEFAULT NULL,
+	TUITION_FEES_REMAINING VARCHAR(50) DEFAULT NULL,
+	STUDENT_ID BIGINT(20) DEFAULT NULL,
+	PRIMARY KEY (FEES_DETAILS_ID),
+	FOREIGN KEY (STUDENT_ID) REFERENCES student_details (STUDENT_ID)
+);
+
+
+CREATE TABLE batch_details (                                                                                                                                  
+	BATCH_ID BIGINT(20) NOT NULL AUTO_INCREMENT,
+	BATCH_NAME VARCHAR(50) DEFAULT NULL,
+	TRAINER_NAME VARCHAR(50) DEFAULT NULL,
+	START_DATE DATE DEFAULT NULL,
+	END_DATE DATE DEFAULT NULL,
+	DURATION VARCHAR(50) DEFAULT NULL,
+	TIMING VARCHAR(50) DEFAULT NULL,
+	CENTER VARCHAR(50) DEFAULT NULL,
+	LAB VARCHAR(50) DEFAULT NULL,
+	CAPACITY VARCHAR(50) DEFAULT NULL,
+	BATCH_SCHEDULE TEXT DEFAULT NULL,
+	IS_COMPLETED CHAR(1) DEFAULT NULL,
+	PRIMARY KEY (BATCH_ID)
+);
+
+

@@ -1,0 +1,186 @@
+html{
+	background-color:#2F2F2F;
+}
+
+body{
+	height: 100%;
+	overflow:auto;
+	background-color:rgb(245, 245, 245);
+}
+
+
+#header {
+    margin-left:0%;
+    top: 0px;
+    width: 100%;
+	height: 8%;
+	position: inherit;
+	font-family: 'bgMed',arial,helvetica,sans-serif;
+    color: #000000;
+   /*  z-index: 50; */
+    text-transform: uppercase;
+    background-color: #ffffff;
+    border-bottom: 2px solid hsl(180,70%,55%);
+    /* padding-top:20px; */
+}
+
+#footer {
+	/*margin-left:20%;*/
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+	height: 10%;
+	position: fixed;
+	font-family: 'bgMed',arial,helvetica,sans-serif;
+    font-size: 0.6em;
+    color: #fff;
+    z-index: 15;
+    text-transform: uppercase;
+    background-color: #3466a3;
+	padding-top:20px;   
+    text-align:center;
+}
+
+
+#sidemenu {
+    width: 15%;
+    background-color:#3466a3;
+    height: 100%;
+    overflow: auto;
+    float: left;
+    z-index: 20;
+    position: fixed;
+    left: 0px;
+    margin-top:
+}
+
+#sidemenu #menu {
+    color: #fff;
+    text-align: right;
+    list-style-type: none;
+    margin-right: 10px;
+    float: right;
+    margin-top:5%;
+    
+}
+
+#sidemenu #menu li {
+    width: 200px;
+    height: 35px;
+    font-size: 15px;
+}
+
+#sidemenu #menu li a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+#sidemenu #menu li:active{
+	border-left: 5px solid hsl(180,70%,55%);
+}
+
+#sidemenu #menu li:hover {
+    background-color: #635555;
+    border-left: 5px solid hsl(180,70%,55%);
+}
+
+.logo{
+	float:left;
+	margin-left : 15px;
+    width: 130px;
+    height: 100px;
+    background-image: url('HomeLogo.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.headerTitle{
+	float:left;
+	color : #635555;
+	text-align:center;
+	margin-top:30px;
+	margin-left:20px;
+    padding-left:5px;
+    font-size: 20
+}
+#site-content {
+    width: 100%;
+    height: 80%;
+    overflow: auto;
+    float: left;
+    /* z-index: 20; */
+    position: fixed;
+    /* min-height: 600px; */
+    margin-bottom:1%;
+   /* margin-left:15%;*/
+    padding-left:10px;
+    /* background-color: #e4e4e4; */
+}
+.table-head{
+	background-color: #7fbee2;
+	width: 10%;
+	column-width: 10%;
+    border-radius: 25px;
+}
+.table-head th{
+	text-align:center;
+}
+table th:first-child{
+  border-radius:10px 0 0 10px;
+}
+
+table th:last-child{
+  border-radius:0 10px 10px 0;
+}	
+.table-body{
+	text-align:center;
+	width: 10%;
+}
+
+.h3-batch-schedule{
+text-align : center;
+color: maroon;
+padding-bottom: 2%
+}
+
+.table, th, td 
+{
+	text-align: center;
+	font: 14px;
+	font-family: sans-serif;
+}
+.viewIcon {
+    width: 30px;
+    height: 35px;
+}
+fieldset.for-panel {
+	background-color: #fcfcfc !important;
+	border: 2px solid #999;
+	border-radius: 4px;
+	padding: 15px 10px;
+	background-color: #d9edf7;
+	border-color: #bce8f1;
+	background-color: #f9fdfd;
+	margin-bottom: 12px;
+	padding-left: 75px;
+	padding-right: 10px;
+}
+
+fieldset.for-panel legend {
+	background-color: #fafafa;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	color: #4381ba;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 10px;
+	margin: inherit;
+	padding: 7px;
+	width: auto;
+	background-color: #d9edf7;
+	margin-bottom: 0;
+}
+.danger{
+	color : red;
+}
